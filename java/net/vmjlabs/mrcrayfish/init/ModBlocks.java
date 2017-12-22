@@ -1,19 +1,13 @@
 package net.vmjlabs.mrcrayfish.init;
 
+import com.mrcrayfish.device.init.DeviceBlocks;
 import com.mrcrayfish.device.item.ItemDevice;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.vmjlabs.mrcrayfish.block.BlockMonitor;
 
-import java.util.ArrayList;
+public class ModBlocks extends DeviceBlocks{
 
-public class ModBlocks {
-    public static ArrayList<Block> BLOCKS = new ArrayList<>();
-
-   // @GameRegistry.ObjectHolder("pc_monitor")
     public static final Block MONITOR;
 
     static{
@@ -30,9 +24,14 @@ public class ModBlocks {
         registerBlock(block, new ItemBlock(block));
     }
 
-    @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(monitor);
+    private static void registerBlock(Block block, ItemBlock item)
+    {
+        if(block.getRegistryName() == null)
+            throw new IllegalArgumentException("A block being registered does not have a registry name and could be successfully registered.");
+
+        RegistrationHandler.Blocks.add(block);
+        item.setRegistryName(block.getRegistryName());
+        RegistrationHandler.Items.add(item);
     }
 
 }
