@@ -1,6 +1,8 @@
 package net.vmjlabs.mrcrayfish.init;
 
+import com.mrcrayfish.device.item.ItemDevice;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -12,14 +14,20 @@ public class ModBlocks {
     public static ArrayList<Block> BLOCKS = new ArrayList<>();
 
    // @GameRegistry.ObjectHolder("pc_monitor")
-    public static final Block monitor = new BlockMonitor();
+    public static final Block MONITOR;
 
-    public static void registerBlocks(){
-        BLOCKS.add(monitor);
+    static{
+        MONITOR = new BlockMonitor();
     }
 
-    public void register(){
+    public static void register()
+    {
+        registerBlock(MONITOR, new ItemDevice(MONITOR));
+    }
 
+    private static void registerBlock(Block block)
+    {
+        registerBlock(block, new ItemBlock(block));
     }
 
     @SubscribeEvent

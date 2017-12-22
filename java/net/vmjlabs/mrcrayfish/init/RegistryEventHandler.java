@@ -23,6 +23,7 @@ public class RegistryEventHandler {
         for(Block block : ModBlocks.BLOCKS) {
             event.getRegistry().register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
             System.out.println("REGISTERED: "+block.getUnlocalizedName());
+            System.out.println("@ "+block.getRegistryName());
         }
         System.out.println("Registered all Items & Blocks");
     }
@@ -33,6 +34,7 @@ public class RegistryEventHandler {
     public static void registerModels(ModelRegistryEvent event) {
 
         for(Item item: ModItems.ITEMS) {
+            System.out.println(item.getRegistryName());
             ModelLoader.setCustomModelResourceLocation(item, 0 , new ModelResourceLocation(item.getRegistryName(), "inventory"));
         }
 
