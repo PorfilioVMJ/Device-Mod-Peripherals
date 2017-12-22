@@ -1,0 +1,17 @@
+[
+{
+  "modid": "vmjhm",
+  "name": "VMJ's Home Manager",
+  "description": "Adds a home manager app to the device mod",
+  "version": "1.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["PorfilioVMJ"],
+  "credits": "MrCrayfish for making device api",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": [],
+  "parent": "cdm"
+}
+]
